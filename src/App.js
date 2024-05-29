@@ -13,8 +13,8 @@ function App() {
         <Nav></Nav>
         <Routes>
           <Route path="/" exact element={<Home />}></Route>
-          <Route path="/books" element={<Books books={books} />}></Route>
-          <Route path="/books/1" element={<BookInfo books={books} />} />
+          <Route path="/books" exact element={<Books books={books} />}></Route>
+          <Route path="/books/:id" element={<BookInfo books={books} />} />
         </Routes>
         <Footer></Footer>
       </div>
