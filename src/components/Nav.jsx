@@ -13,7 +13,7 @@ export default function Nav({ numberOfItems }) {
   }
 
   return (
-    <div>
+    <>
       <div className="nav__container">
         <Link to="/">
           <img src={LibraryLogo} alt="" className="logo" />
@@ -64,6 +64,6 @@ export default function Nav({ numberOfItems }) {
           </ul>
         </div>
       </div>
-    </div>
+    </>
   );
 }
