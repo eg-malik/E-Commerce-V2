@@ -48,6 +48,14 @@ function App() {
     setCart(cart.filter((book) => book.id !== item.id));
   }
 
+  function numberOfItems() {
+    let counter = 0;
+    cart.forEach((item) => {
+      counter += item.quantity;
+    });
+    return counter;
+  }
+
   useEffect(() => {
     // console.log(cart);
   }, [cart]);
@@ -55,7 +63,7 @@ function App() {
   return (
     <Router>
       <div className="App">
-        <Nav></Nav>
+        <Nav numberOfItems={numberOfItems()}></Nav>
         <Routes>
           <Route path="/" exact element={<Home />}></Route>
           <Route path="/books" exact element={<Books books={books} />}></Route>
