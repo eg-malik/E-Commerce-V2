@@ -31,12 +31,25 @@ function App() {
     }
   }
 
-  function changeQuantity(book) {
-    console.log(book.quantity);
+  function changeQuantity(book, quantity) {
+    setCart(
+      cart.map((item) =>
+        item.id === book.id
+          ? {
+              ...item,
+              quantity: +quantity,
+            }
+          : item
+      )
+    );
+  }
+
+  function removeItem(item) {
+    setCart(cart.filter((book) => book.id !== item.id));
   }
 
   useEffect(() => {
-    console.log(cart);
+    // console.log(cart);
   }, [cart]);
 
   return (
@@ -52,7 +65,17 @@ function App() {
               <BookInfo books={books} addToCart={addToCart} cart={cart} />
             }
           />
-          <Route path="/cart" element={<Cart books={books} />} />
+          <Route
+            path="/cart"
+            element={
+              <Cart
+                books={books}
+                cart={cart}
+                changeQuantity={changeQuantity}
+                removeItem={removeItem}
+              />
+            }
+          />
         </Routes>
         <Footer></Footer>
       </div>
